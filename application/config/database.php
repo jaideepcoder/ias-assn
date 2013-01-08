@@ -1,4 +1,9 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+//ClearDB MySQL config
+//$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
+//$db=substr($url["path"],1);
+
 /*
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
@@ -48,10 +53,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = '';
-$db['default']['password'] = '';
-$db['default']['database'] = '';
+$db['default']['hostname'] = 'us-cdbr-east-02.cleardb.com';//$url["host"];'localhost';
+$db['default']['username'] = 'b153e1b7836312';//$url["user"];'';
+$db['default']['password'] = '83fcdc4d';//$url["pass"];'';
+$db['default']['database'] = 'af_52cbf601301113a';//$db;'';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

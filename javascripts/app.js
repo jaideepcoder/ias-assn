@@ -37,16 +37,59 @@
 
 })(jQuery, this);
 
+//Custom Javascript
+
 setTimeout(function() {
 $(document).ready(function() {
-	$("a[data-reveal-id]").click();
-	$("#fname").focus();
+	if($('.alert-box').html()=="") {
+		$("a[data-reveal-id]").click();
+		$("#fname").focus();
+	}
+	else {
+		$("a[data-reveal-id]")[1].click();
+		$("#username").focus();
+	}
+});
+},3000);
+
+$(document).ready(function() {
+	$('.alert-box').hide();
+	if($('.alert-box').html()!="") {
+		$('.alert-box').show();
+	}
+	$('.alert-box').click(function() {
+		$('.alert-box').hide('slow');
+	});
+	$('#contactsubmit').click(function() {
+		$.ajax({
+			type: 'POST',
+			url: base_url+'index.php/app/feedback',
+			data: {
+				user: $('#user').val(),
+				message: $('#message').val()
+			},
+			datatype: 'json',
+			success: function(data) {
+				
+				if(data.success == true) {
+					$('.alert-box').html('Your message has been delivered successfully');
+					$('.alert-box').addClass('success');
+				}
+				else {
+					$('.alert-box').html('Awe snap! This was not supposed to happen!');
+					$('.alert-box').addClass('alert');
+				}
+				$('alert-box').show();
+			}
+		});
+	});
+	
 	$('.fb-login-button').click(function() {
 		login();
 	});
 });
-},3000);
 
+//API Calls
 //Facebook Like...
 
 ( function(d, s, id) {
@@ -73,13 +116,13 @@ $(document).ready(function() {
 
     FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
-    window.location.replace("http://stackoverflow.com");
+    window.location.assign("/dashboard.php");
   } else if (response.status === 'not_authorized') {
     // not_authorized
-    login();
+    //login();
   } else {
     // not_logged_in
-    login();
+    //login();
   }
  });
 

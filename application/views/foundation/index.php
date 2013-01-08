@@ -4,7 +4,7 @@
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" manifest="<?=  base_url(); ?>cache.appcache"> <!--<![endif]-->
 <head>
   <meta charset="utf-8" />
 
@@ -22,13 +22,13 @@
   -->
   
   <!-- Included CSS Files (Compressed) -->
-  <link rel="stylesheet" href="stylesheets/foundation.min.css">
-  <link rel="stylesheet" href="stylesheets/app.css">
+  <link rel="stylesheet" href="<?= base_url(); ?>stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="<?= base_url(); ?>stylesheets/app.css">
   <link href='https://fonts.googleapis.com/css?family=Pirata+One' rel='stylesheet' type='text/css'>
 
   <link rel="icon" type="image/png" href="<?= base_url(); ?>images/favicon.png">
 
-  <script src="javascripts/modernizr.foundation.js"></script>
+  <script src="<?= base_url(); ?>javascripts/modernizr.foundation.js"></script>
 </head>
 <body>
 
@@ -38,7 +38,7 @@
 
   <nav class="top-bar fixed">
     <ul>
-      <li class="name"><h1><a href="#">Home</a></h1></li>
+      <li class="name"><h1><?= anchor('dashboard', 'Home'); ?></h1></li>
       <li class="toggle-topbar"><a href="#"></a></li>
     </ul>
 <!--
@@ -89,7 +89,7 @@
 			} else {
 				array_push($arr, $num);
 			}
-			echo "\t\t<img src=\"images/" . $num . ".jpg\"/>\n";
+			echo "\t\t<img src=\"" . base_url() . "images/" . $num . ".jpg\"/>\n";
 		}
 		?>
       </div>
@@ -98,13 +98,15 @@
   <!-- End Header -->
   <div id="login" class="reveal-modal">
     
-    <form>
+    
+   <?= form_open('verify'); ?>
   <label>Username</label>
-  <input type="email" placeholder="john.doe@ias-assn.org" required/>
+  <input type="text" name="username" id="username" value="<?php echo set_value('username'); ?>" placeholder="john.doe" required/>
   <label>Password</label>
-  <input type="password" class="twelve" placeholder="Password" required/>
+  <input type="password" name="password" id="password" value="<?php echo set_value('password'); ?>" class="twelve" placeholder="Password" required/>
   <input type="submit" class="button" value="Login"/>
   <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
+  <div style="margin-top: 10px;" class="alert-box alert"><?= validation_errors(); ?></div>
 </form>
 
     <a class="close-reveal-modal">×</a>
@@ -122,7 +124,7 @@
       <input type="text" placeholder="Last Name"  required/>
     </div></div>
     <label>Username</label>
-  <input type="email" placeholder="john.doe"  required/>
+  <input type="text" placeholder="john.doe"  required/>
     <label>Email</label>
   <input type="email" placeholder="john.doe@ias-assn.org"  required/>
     <label>Password</label>
@@ -160,7 +162,7 @@
 			js.src = "//platform.twitter.com/widgets.js";
 			fjs.parentNode.insertBefore(js, fjs);
 		}
-	}(document, "script", "twitter-wjs");
+	}(document, "script", "twitter-wjs"); 
 </script>
     </div>
     
@@ -179,7 +181,7 @@
 
         <div class="six columns">
             <ul class="link-list right">
-              <li><a href="#">Contact Us</a></li>
+              <li><a href="<?= base_url(); ?>index.php/app/contact">Contact Us</a></li>
               <li><a href="#">Behind the Scenes</a></li>
               <li><a href="#">Map</a></li>
               <li><a href="http://www.hardcodeit.com">HardcodeIT</a></li>
@@ -228,11 +230,11 @@
   -->
   
   <!-- Included JS Files (Compressed) -->
-  <script src="javascripts/jquery.js"></script>
-  <script src="javascripts/foundation.min.js"></script>
+  <script src="<?= base_url(); ?>javascripts/jquery.js"></script>
+  <script src="<?= base_url(); ?>javascripts/foundation.min.js"></script>
   
   <!-- Initialize JS Plugins -->
-  <script src="javascripts/app.js"></script>
+  <script src="<?= base_url(); ?>javascripts/app.js"></script>
   
     <script type="text/javascript">
 		$(window).load(function() {
@@ -249,7 +251,7 @@
 		po.src = 'https://apis.google.com/js/plusone.js';
 		var s = document.getElementsByTagName('script')[0];
 		s.parentNode.insertBefore(po, s);
-	})();
+	})(); 
 </script>
 </body>
 </html>
