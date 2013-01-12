@@ -22,13 +22,13 @@
   -->
   
   <!-- Included CSS Files (Compressed) -->
-  <link rel="stylesheet" href="<?= base_url(); ?>stylesheets/foundation.min.css">
-  <link rel="stylesheet" href="<?= base_url(); ?>stylesheets/app.css">
+  <link rel="stylesheet" href="stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="stylesheets/app.css">
   <link href='https://fonts.googleapis.com/css?family=Pirata+One' rel='stylesheet' type='text/css'>
 
-  <link rel="icon" type="image/png" href="<?= base_url(); ?>images/favicon.png">
+  <link rel="icon" type="image/png" href="images/favicon.png">
 
-  <script src="<?= base_url(); ?>javascripts/modernizr.foundation.js"></script>
+  <script src="javascripts/modernizr.foundation.js"></script>
 </head>
 <body>
 
@@ -105,8 +105,9 @@
   <label>Password</label>
   <input type="password" name="password" id="password" value="<?php echo set_value('password'); ?>" class="twelve" placeholder="Password" required/>
   <input type="submit" class="button" value="Login"/>
-  <div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>
-  <div style="margin-top: 10px;" class="alert-box alert"><?= validation_errors(); ?></div>
+  <!--<div class="fb-login-button" data-show-faces="false" data-width="200" data-max-rows="1"></div>-->
+  <div style="margin-top: 10px;" class="alert-box alert"><?= $flashlog ?></div>
+  <div style="margin-top: 10px;" class="alert-box success"><?=$flashsuccessreg; ?></div>
 </form>
 
     <a class="close-reveal-modal">×</a>
@@ -114,26 +115,59 @@
   
   <div id="signup" class="reveal-modal">
     
-    <form>
+    <?= form_open('register/new'); ?>
   <label>&nbsp;&nbsp;&nbsp;&nbsp;Name</label>
     <div class="row">
     <div class="six columns">
-      <input type="text" id="fname" placeholder="First Name"  required/>
+      <input type="text" id="fname" name="fname" placeholder="First Name" maxlength="50" required/>
     </div>
     <div class="six columns">
-      <input type="text" placeholder="Last Name"  required/>
+      <input type="text" id="lname" name="lname" placeholder="Last Name" maxlength="50" required/>
     </div></div>
     <label>Username</label>
-  <input type="text" placeholder="john.doe"  required/>
+  <input type="text" id="username" name="username" placeholder="john.doe" maxlength="50" required/>
     <label>Email</label>
-  <input type="email" placeholder="john.doe@ias-assn.org"  required/>
+  <input type="email" id="email" name="email" placeholder="john.doe@domain.com"  required/>
     <label>Password</label>
-  <input type="password" placeholder="Password"  required/>
+  <input type="password" id="password" name="password" placeholder="Password" required/>
   <label>Confirm Password</label>
   <input type="password" placeholder="Password"  required/>
   <label>Birthday</label>
   <input type="date" name="bday">
+  <label>Cadre</label>
+  <input type="text" name="cadre" maxlength="2">
+  <label>Batch</label>
+  <input type="text" name="batch" min="1111" max="9999">
+  <label>About Me</label>
+  <textarea name="aboutme" rows="10" cols="50"></textarea>
+  <label>Contact Info</label>
+  <div class=" row">
+  	<div class="six columns">
+      <div class="two mobile-one columns">
+        <span class="prefix" style="width: 30px;">+91</span>
+      </div>
+      <div class="ten mobile-three columns">
+        <input type="tel" min="1111111111" maxlength="10" max="9999999999" name="mobile" placeholder="Mobile"/>
+      </div>
+    </div>
+  	<div class="six columns">
+      <div class="one mobile-one columns">
+        <span class="prefix" style="width: 30px;">+91</span>
+      </div>
+      <div class="four mobile-one columns">
+        <input type="tel" min="111" maxlength="3" max="999" name="std" style="margin-left: 10px;" placeholder="Std"/>
+      </div>
+      <div class="six mobile-three columns">
+        <input type="tel" min="1111111" maxlength="7" max="7999999" name="landline" style="margin-left: 10px;" placeholder="Landline"/>
+      </div>
+    </div>
+  </div>
+  <label>Spouse</label>
+  <input type="text" name="cadre" maxlength="2">
+  
+ 
   <input type="submit" class="button" value="Sign Up"/>
+  <div style="margin-top: 10px;" class="alert-box alert"><?=$flasherrorreg; ?></div>
 </form>
     <a class="close-reveal-modal">×</a>
     </div>
@@ -141,7 +175,9 @@
   <!-- Three-up Content Blocks -->
   
   <div class="row">
-  
+  	<div class="two columns">
+    	<img src="http://placehold.it/100x50&text=<?= $site_count; ?>">
+    </div>
     <div class="five columns">
     	<div class="fb-like" data-href="http://ias-assn.rs.af.cm" data-send="true" data-width="450" data-show-faces="true"></div>
     </div>
@@ -151,7 +187,7 @@
 <div class="g-plusone" data-annotation="inline" data-width="300"></div>
 	</div>
     
-    <div class="three columns">
+    <div class="one columns">
     	<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
 <script>
 	! function(d, s, id) {
@@ -162,7 +198,7 @@
 			js.src = "//platform.twitter.com/widgets.js";
 			fjs.parentNode.insertBefore(js, fjs);
 		}
-	}(document, "script", "twitter-wjs"); 
+	}(document, "script", "twitter-wjs");
 </script>
     </div>
     
@@ -181,7 +217,7 @@
 
         <div class="six columns">
             <ul class="link-list right">
-              <li><a href="<?= base_url(); ?>index.php/app/contact">Contact Us</a></li>
+              <li><a href="index.php/app/contact">Contact Us</a></li>
               <li><a href="#">Behind the Scenes</a></li>
               <li><a href="#">Map</a></li>
               <li><a href="http://www.hardcodeit.com">HardcodeIT</a></li>
@@ -230,11 +266,27 @@
   -->
   
   <!-- Included JS Files (Compressed) -->
-  <script src="<?= base_url(); ?>javascripts/jquery.js"></script>
-  <script src="<?= base_url(); ?>javascripts/foundation.min.js"></script>
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/foundation.min.js"></script>
   
   <!-- Initialize JS Plugins -->
-  <script src="<?= base_url(); ?>javascripts/app.js"></script>
+  <script src="javascripts/app.js"></script>
+  
+  <script type="text/javascript">
+	$(document).ready(function() {
+		$('.alert-box').hide();
+		if ($('.alert-box.success').html() != "") {
+			$('.alert-box.success').show();
+		}
+
+		if ($('.alert-box.alert').html() != "") {
+			$('.alert-box.alert').show();
+		}
+		$('.alert-box').click(function() {
+			$(this).hide('slow');
+		});
+	});
+  </script>
   
     <script type="text/javascript">
 		$(window).load(function() {
@@ -251,7 +303,7 @@
 		po.src = 'https://apis.google.com/js/plusone.js';
 		var s = document.getElementsByTagName('script')[0];
 		s.parentNode.insertBefore(po, s);
-	})(); 
+	})();
 </script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php
 if (!defined('BASEPATH'))
 	exit('No direct script access allowed');
+session_start();
 
 class Verify extends CI_Controller {
 
@@ -18,17 +19,12 @@ class Verify extends CI_Controller {
 
 		if ($this -> form_validation -> run() == FALSE) {
 			//Field validation failed.&nbsp; User redirected to login page
-
-			$data['title'] = 'Welcome to IAS | Made personal for you.';
-			$data['description'] = 'An interactive portal for IAS officers.';
-			$data['keywords'] = 'ias, portal, news, event';
-			$data['heading'] = 'IAS PORTAL';
-			$data['results'] = '';
-
-			$this -> load -> view('foundation/index', $data);
+			$this->session->set_flashdata('errorlog', 'Invalid Username or Password');
+			redirect('gateway', 'refresh');
 
 		} else {
 			//Go to private area
+			$this->app_model->makeonline($this -> input -> post('username'));
 			redirect('dashboard', 'refresh');
 		}
 
@@ -44,12 +40,12 @@ class Verify extends CI_Controller {
 		if ($result) {
 			$sess_array = array();
 			foreach ($result as $row) {
-				$sess_array = array('id' => $row -> id, 'username' => $row -> username);
+				$sess_array = array('username' => $row -> username);
 				$this -> session -> set_userdata('logged_in', $sess_array);
 			}
 			return TRUE;
 		} else {
-			$this -> form_validation -> set_message('check_database', 'Invalid username or password');
+			$this -> form_validation -> set_message('check_database', 'Invalid Username or Password');
 			return false;
 		}
 	}

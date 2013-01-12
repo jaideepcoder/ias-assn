@@ -28,11 +28,31 @@
 	font-family: 'Pirata One', cursive;
 }
 
+a.small.button.joyride-next-tip {
+	width: 50%;
+	margin-left: 25%;
+	font-size: larger;
+	padding-top: 10px;
+}
+
+div.joyride-content-wrapper p {
+	text-align: center;	
+	
+}
+
 a.button { 
 width: 251px; 
 height:42px; 
 display: inline-block; 
 } 
+
+#chat {
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	width: 200px;
+}
 
 /* Google Maps */
 
