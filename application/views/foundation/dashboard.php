@@ -10,7 +10,7 @@
   <!-- Set the viewport width to device width for mobile -->
   <meta name="viewport" content="width=device-width" />
 
-  <title>Home | IAS</title>
+  <title>Home | This is IAS</title>
   
   <!-- Included CSS Files (Uncompressed) -->
   <!--
@@ -93,13 +93,40 @@
 
         <div class="four mobile-four columns">
 
-          <a class="th"><img src="http://res.cloudinary.com/demo/image/facebook/w_500,h_500,c_thumb,g_face/sanjay.bhoosreddy.jpg" height="500" width="500"></a>
+          <a class="th"><img src="<?= $image; ?>" height="500" width="500"></a>
 
           <div class="hide-for-small panel">
             <h3><?= $fname . ' ' . $lname; ?></h3>
-            <h5>Spouse: <?= $spouse; ?></h5>
-            <h6>Add: <?= $street; ?></h6>
-            <p><?= $city . ', ' . $state . '. ' . $zip; ?></p>
+            <div class="row">
+            	<div class="six columns"><h6>Spouse: </h6><p><?= $spouse; ?></p></div>
+				<div class="six columns">
+            <h6>Children: </h6><p>
+            	<?php foreach ($children as $row) {
+					echo $row['child'] . '<br />';
+				}
+            	?></p>
+            	</div>
+            </div>
+            <div class="row">
+            	<div class="six columns"><h6>Mobile:</h6><p>
+            	<?php foreach ($mobile as $row) {
+					echo $row['number'] . '<br />';
+				}
+            	?>
+            </p></div>
+            <div class="six columns"><h6>Landline:</h6><p>
+            	<?php foreach ($landline as $row) {
+					echo $row['std'] . ' - ' . $row['number'] . '<br />';
+				}
+            	?></p>
+            </div>
+            </div>
+            <h6>Emails:</h6><p><?php foreach ($emails as $row) {
+					echo mailto($row['email']) . '<br />';
+				}
+            	?></p>
+            <h6>Address:</h6><p><?= $street; ?><br />
+            <?= $city . ', ' . $state . '. ' . $zip; ?></p>
             <p class="subheader"><?= $aboutme ?>
             </p>
           </div>
@@ -232,7 +259,7 @@
           <div class="row">
 
             <div class="four mobile-two columns">
-              <a class="th" data-reveal-id="cadre"><img width="500" height="500" src="<?= base_url(); ?>images/cadre.jpg">
+              <a class="th" data-reveal-id="lbsnaa"><img width="500" height="500" src="<?= base_url(); ?>images/lbsnaa.jpg">
 
               <div class="panel">
                 <h5>LBSNAA Activity Board</h5>
@@ -317,7 +344,7 @@
             </div>
 
             <div class="four mobile-two columns">
-              <a class="th" data-reveal-id="sages"><img width="500" height="500" src="<?= base_url(); ?>images/sages.jpg">
+              <a class="th" data-reveal-id="news"><img width="500" height="500" src="<?= base_url(); ?>images/news.jpg">
 
               <div class="panel">
                 <h5>News</h5>
@@ -386,7 +413,7 @@
             </div>
 
             <div class="four mobile-two columns">
-              <a class="th" data-reveal-id="clubs"><img width="500" height="500" src="<?= base_url(); ?>images/service.jpg">
+              <a class="th" data-reveal-id="clubs"><img width="500" height="500" src="<?= base_url(); ?>images/clubs.png">
 
               <div class="panel">
                 <h5>Clubs</h5>
@@ -394,22 +421,22 @@
             </div>
 
             <div class="four mobile-two columns">
-              <a class="th" data-reveal-id="survival"><img width="500" height="500" src="<?= base_url(); ?>images/survival.png">
+              <a class="th" data-reveal-id="travel"><img width="500" height="500" src="<?= base_url(); ?>images/travel.jpg">
 
               <div class="panel">
-                <h5>Transportations</h5>air, train, road
+                <h5>Travel Guide</h5>
               </div></a>
             </div>
             
             <div class="four mobile-two columns">
-              <a class="th" data-reveal-id="survival"><img width="500" height="500" src="<?= base_url(); ?>images/survival.png">
+              <a class="th" data-reveal-id="perquisites"><img width="500" height="500" src="<?= base_url(); ?>images/perks.jpg">
 
               <div class="panel">
-                <h5>Perquisites</h5>directorate of estates, ltc, htc
+                <h5>Perquisites</h5>
               </div></a>
             </div>
             
-            <div class="four mobile-two columns">
+           <!-- <div class="four mobile-two columns">
               <a class="th" data-reveal-id="survival"><img width="500" height="500" src="<?= base_url(); ?>images/survival.png">
 
               <div class="panel">
@@ -423,7 +450,7 @@
               <div class="panel">
                 <h5>Media coverage: Links and photos of paper clippings</h5>
               </div></a>
-            </div>
+            </div>-->
             </li>
 </ul>
     <!-- End Thumbnails -->
@@ -432,7 +459,7 @@
     <div id="cadre" class="reveal-modal">
     <ul><h2>Cadre</h2>
     	<li><?= anchor('http://www.whispersinthecorridors.com', 'Cadre wise contact details of officers in the states, including official contacts plus FB/Twitter/Blog/ Email or any other brief personal details they may wish to add.', array('target' => '_blank')); ?></li>
-    	<li><?= anchor('http://www.uplegassembly.nic.in', 'Cadre/ State IAS Association details', array('target' => '_blank')); ?></li>
+    	<li><?= anchor('#', 'Cadre/ State IAS Association details', array('target' => '_blank', 'data-reveal-id' => 'cadreias')); ?></li>
     	<li><?= anchor('#', 'Cadre/State Spouse Association details', array('target' => '_blank', 'data-reveal-id' => 'cadrespouse')); ?></li>    	
     </ul>
     <a class="close-reveal-modal">×</a>
@@ -515,9 +542,9 @@
   <div id="hospitals" class="reveal-modal">
     <ul><h3>Hospitals</h3>
     	<li><?= anchor('ihttp://msotransparent.nic.in/cghsnew/index1.asp?linkid=29&langid=1', 'CGHS Empanelled Hospitals', array('target' => '_blank')); ?></li>
-    	<h2>CGHS Approved Hospitals</h2>
-    	i><div class="row"><div class="six columns"><?= anchor('http://www.medanta.org/', 'Medanta', array('target' => '_blank')); ?> Sector-38, Rajiv Chowk, Gurgaon, Haryana  122001</div><div class="six columns"> Hotline: +91 124 4141414</div></div></li>
-    	<h2>Private Hospitals</h2>
+    	<h5>CGHS Approved Hospitals</h5>
+    	<li><div class="row"><div class="six columns"><?= anchor('http://www.medanta.org/', 'Medanta', array('target' => '_blank')); ?> Sector-38, Rajiv Chowk, Gurgaon, Haryana  122001</div><div class="six columns"> Hotline: +91 124 4141414</div></div></li>
+    	<h5>Private Hospitals</h5>
     	<li><div class="row"><div class="six columns"><?= anchor('http://www.medanta.org/', 'Medanta', array('target' => '_blank')); ?> Sector-38, Rajiv Chowk, Gurgaon, Haryana  122001</div><div class="six columns"> Hotline: +91 124 4141414</div></div></li>
     	<li><div class="row"><div class="six columns"><?= anchor('http://www.medanta.org/', 'Medanta', array('target' => '_blank')); ?></div><div class="six columns"> Hotline: +91 124 4141414</div></div></li>
     	<li><div class="row"><div class="six columns"><?= anchor('http://www.medanta.org/', 'Medanta', array('target' => '_blank')); ?></div><div class="six columns"> Hotline: +91 124 4141414</div></div></li>
@@ -536,7 +563,57 @@
     <a class="close-reveal-modal">×</a>
   </div>
   
+  <div id="travel" class="reveal-modal">
+    <ul><h3>Travel Guide</h3>
+    	<li><?= anchor('http://www.indianrail.gov.in/', 'Indian Railways', array('target' => '_blank')); ?></li>
+    	<li><?= anchor('http://indiarailinfo.com/', 'Indian Rail Info', array('target' => '_blank')); ?></li>
+    	<li><?= anchor('http://www.airindia.com/', 'Air India', array('target' => '_blank')); ?></li>
+    	<li><?= anchor('http://www.jetairways.com/', 'Jet Airways', array('target' => '_blank')); ?></li>
+    	<li><?= anchor('http://www.flykingfisher.com/index.asp', 'Kingfisher Airlines', array('target' => '_blank')); ?></li>
+    	<li><?= anchor('http://quickcabs.in/track/dispatch_client_login.php', 'Quick Cabs', array('target' => '_blank')); ?> &nbsp;&nbsp;&nbsp;011-67676767, 011-45333333</li>
+    	<li><?= anchor('http://www.merucabs.com/', 'Meru Cabs', array('target' => '_blank')); ?> &nbsp;&nbsp;&nbsp;44224422</li>    	
+    </ul>
+    <a class="close-reveal-modal">×</a>
+  </div>
   
+  <div id="perquisites" class="reveal-modal">
+  	<ul><h3>Perquisites</h3>
+  		<li><?= anchor('http://estates.nic.in/', 'Directorate of Estates', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://persmin.gov.in/DOPT_ActRules_CCS(LTC)_Index.asp', 'LTC Rules', array('target' => '_blank')); ?></li>
+  	</ul>
+  	<a class="close-reveal-modal">×</a>
+  </div>
+  
+  <div id="news" class="reveal-modal">
+  	<ul><h3>News</h3>
+  		<li><?= anchor('http://www.whispersinthecorridors.com/', 'Whispers in the Corridors', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://uplegassembly.nic.in/', 'UP Legal Assembly', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://www.sarkaritel.com/', 'Sarkari Tel', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://www.indianofficer.in/', 'Indian Officer', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://www.bureaucratsnews.com/', 'Bureaucrats News', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://www.powerbuzz.in/', 'Powerbuzz', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://www.bureaucracytoday.com/', 'Bureaucracy Today', array('target' => '_blank')); ?></li>
+  	</ul>
+  	<a class="close-reveal-modal">×</a>
+  </div>
+  
+  <div id="cadreias" class="reveal-modal">
+  	<ul><h3>Cadre IAS Associations</h3>
+  		<li><?= anchor('http://www.iasmah.org/', 'IAS Association Maharashtra', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://www.tn-ias.org/', 'IAS Association Tamil Nadu', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://www.intraias.nic.in/', 'IntraIAS', array('target' => '_blank')); ?></li>
+  	</ul>
+  	<a class="close-reveal-modal">×</a>
+  </div>
+  
+  <div id="lbsnaa" class="reveal-modal">
+  	<ul><h3>LBSNAA Activity Boards</h3>
+  		<li><?= anchor('http://www.lbsnaa.gov.in/courses/listing/4', 'Workshops and Seminars', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://www.lbsnaa.gov.in/courses/upcomingcourse', 'Upcomming Courses', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://www.lbsnaa.gov.in/courses/listing/3', 'In-service Courses', array('target' => '_blank')); ?></li>
+  	</ul>
+  	<a class="close-reveal-modal">×</a>
+  </div>
 
 
     <!-- Managed By -->
@@ -550,7 +627,7 @@
                   </div>
 
                   <div class="ten mobile-two columns">
-                    <strong>This Site Is Managed By <a href="http://www.facebook.com/jaideep.kiler" target="_blank">Jaideep Kumar</a><hr/></strong>
+                    <strong>This Site Is Managed By <a href="http://www.facebook.com/jaideep.kiler" target="_blank">Jaideep Bhoosreddy</a><hr/></strong>
 
                     There is no need to search for a supernatural cause of evil. Man, himself is capable of doing all sorts of wickedness.</div>
 

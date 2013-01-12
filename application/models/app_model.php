@@ -43,11 +43,12 @@ class App_model extends CI_Model {
 	}
 
 	function getuser($username) {
+		/*
 		$this -> db -> select('*');
 		$this -> db -> from('users');
 		//$this->db->join('mobile', 'mobile.username = users.username');
 		//$this->db->join('landline', 'landline.username = users.username');
-		$this -> db -> join('address', 'address.username = users.username');
+		$this -> db -> join('address', 'address.username == users.username');
 		$this -> db -> join('details', 'details.username = users.username');
 		//$this->db->join('emails', 'emails.username  = users.username');
 		$this -> db -> join('about', 'about.username = users.username');
@@ -55,8 +56,59 @@ class App_model extends CI_Model {
 		//$this->db->join('children', 'children.username = users.username');
 		$this -> db -> join('zipcode', 'address.zip = zipcode.zip');
 		$this -> db -> where('users.username', $username);
-		$query = $this -> db -> get();
+		$query = $this -> db -> get();*/
+		$sql = "SELECT 
+    *
+FROM
+    (`users`)
+        left outer JOIN
+    `address` ON `address`.`username` = `users`.`username`
+        left outer JOIN
+    `details` ON `details`.`username` = `users`.`username`
+        left outer JOIN
+    `about` ON `about`.`username` = `users`.`username`
+        left outer JOIN
+    `spouse` ON `spouse`.`username` = `users`.`username`
+        left outer JOIN
+    `zipcode` ON `address`.`zip` = `zipcode`.`zip`
+    	left outer JOIN
+    `social` ON `social`.`username` = `users`.`username`
+WHERE
+    `users`.`username` = ?";
+		$query = $this->db->query($sql, array($username));
 		return $query -> result();
+	}
+	
+	function mob($username) {
+		$this->db->select('*');
+		$this->db->from('mobile');
+		$this -> db -> where('username', $username);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+function land($username) {
+		$this->db->select('*');
+		$this->db->from('landline');
+		$this -> db -> where('username', $username);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+function child($username) {
+		$this->db->select('*');
+		$this->db->from('children');
+		$this -> db -> where('username', $username);
+		$query = $this->db->get();
+		return $query->result();
+	}
+	
+	function email($username) {
+		$this->db->select('*');
+		$this->db->from('emails');
+		$this -> db -> where('username', $username);
+		$query = $this->db->get();
+		return $query->result();
 	}
 	
 	function member($name) {
