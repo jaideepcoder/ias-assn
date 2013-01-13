@@ -10,7 +10,7 @@
   <!-- Set the viewport width to device width for mobile -->
   <meta name="viewport" content="width=device-width" />
 
-  <title>Home | This is IAS</title>
+  <title>Home | This is IAS | Made personal for you...</title>
   
   <!-- Included CSS Files (Uncompressed) -->
   <!--
@@ -178,7 +178,7 @@
             </div>
 
             <div class="four mobile-two columns">
-              <a class="th"  data-reveal-id="sages"><img width="500" height="500" src="<?= base_url(); ?>images/sages.jpg">
+              <a class="th"  data-reveal-id="sages"><img width="500" height="500" src="<?= base_url(); ?>images/sage.JPG">
 
               <div class="panel">
                 <h5>The Sages</h5>
