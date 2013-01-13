@@ -50,7 +50,7 @@
             <ul class="left">
               <li id="dashboard"><?= anchor('dashboard', 'Dashboard'); ?></li>
               <li id="blog"><?= anchor('blog', 'Blog');?></li>
-              <li id="forum"><?= anchor('forum', 'Forum'); ?></li>
+              <li id="forum"><?= anchor('dashboard', 'Forum'); ?></li>
               <li class="has-dropdown">
               	<?= anchor('chatroom', 'Chat Room', array('id'=> 'chatroom')); ?>
               	<ul class="dropdown">
@@ -200,6 +200,23 @@
                 <h5>Survival Guides</h5>
               </div></a>
             </div>
+            
+            <div class="four mobile-two columns">
+              <a class="th" data-reveal-id="finance"><img width="500" height="500" src="<?= base_url(); ?>images/finance.jpg">
+
+              <div class="panel">
+                <h5>Financial Management</h5>
+              </div></a>
+            </div>
+
+            <div class="four mobile-two columns">
+              <a class="th" data-reveal-id="personnel"><img width="500" height="500" src="<?= base_url(); ?>images/personnel.jpg">
+
+              <div class="personnel">
+                <h5>Personnel Matters</h5>
+              </div></a>
+            </div>
+            
        </li>
        <li id="learnTab">
        	        <div class="eight columns">
@@ -265,7 +282,7 @@
                 <h5>LBSNAA Activity Board</h5>
               </div></a>
             </div>
-
+<!--
             <div class="four mobile-two columns">
               <a class="th" data-reveal-id="goi"><img width="500" height="500" src="<?= base_url(); ?>images/goi.jpg">
 
@@ -328,7 +345,7 @@
               <div class="panel">
                 <h5>Emergency Issues and their Follow Up</h5>
               </div></a>
-            </div>
+            </div>-->
 	</li>
 	
        <li id="socialTab">
@@ -336,7 +353,7 @@
           <div class="row">
 
             <div class="four mobile-two columns">
-              <a class="th" data-reveal-id="social"><img width="500" height="500" src="<?= base_url(); ?>images/cadre.jpg">
+              <a class="th" data-reveal-id="social"><img width="500" height="500" src="<?= base_url(); ?>images/connections.jpg">
 
               <div class="panel">
                 <h5>Connections</h5>
@@ -358,7 +375,7 @@
                 <h5>media contacts for every state</h5>
               </div></a>
             </div>
--->
+
             <div class="four mobile-two columns">
               <a class="th" data-reveal-id="survival"><img width="500" height="500" src="<?= base_url(); ?>images/survival.png">
 
@@ -389,7 +406,7 @@
               <div class="panel">
                 <h5>Media coverage: Links and photos of paper clippings</h5>
               </div></a>
-            </div>
+            </div>-->
             </li>
             
        <li id="facilityTab">
@@ -459,7 +476,7 @@
     <div id="cadre" class="reveal-modal">
     <ul><h2>Cadre</h2>
     	<li><?= anchor('http://www.whispersinthecorridors.com', 'Cadre wise contact details of officers in the states, including official contacts plus FB/Twitter/Blog/ Email or any other brief personal details they may wish to add.', array('target' => '_blank')); ?></li>
-    	<li><?= anchor('#', 'Cadre/ State IAS Association details', array('target' => '_blank', 'data-reveal-id' => 'cadreias')); ?></li>
+    	<li><?= anchor('gateway', 'Cadre/ State IAS Association details', array('target' => '_blank', 'data-reveal-id' => 'cadreias')); ?></li>
     	<li><?= anchor('#', 'Cadre/State Spouse Association details', array('target' => '_blank', 'data-reveal-id' => 'cadrespouse')); ?></li>    	
     </ul>
     <a class="close-reveal-modal">×</a>
@@ -476,7 +493,7 @@
   
   <div id="pastures" class="reveal-modal">
     <ul><h2>Greener Pastures</h2>
-    	<li><?= anchor('#', 'Batch wise contact details of officers on VRS or sabbatical', array('target' => '_blank')); ?></li>
+    	<!--<li><?= anchor('#', 'Batch wise contact details of officers on VRS or sabbatical', array('target' => '_blank')); ?></li>-->
     	<li><?= anchor('http://www.unicef.org/india/careers_1442.htm', 'Job Oppertunities at UNICEF', array('target' => '_blank')); ?></li>
     	<li><?= anchor('http://www.whoindia.org/en/Section330.htm', 'Job Oppertunities at WHO', array('target' => '_blank')); ?></li>
     	<li><?= anchor('https://imf.taleo.net/careersection/imf_external/moresearch.ftl?lang=en', 'Job Oppertunities at IMF', array('target' => '_blank')); ?></li>
@@ -555,10 +572,10 @@
   
   <div id="clubs" class="reveal-modal">
     <ul><h3>Clubs</h3>
+    	<li><div class="row"><div class="six columns"><?= anchor('http://www.csoi.org.in/', 'CSOI', array('target' => '_blank')); ?></div><div class="six columns">F-116, Multi Storey Apartments, Kasturba Gandhi Marg,New Delhi-110 001. Contact No.: + 91-11-23070292 (General Manager) + 91-11-23388107 ( Manager) (Reception)  + 91-11-23383438/23383572/32034885 + 91-11-23073138 (Accounts) +91-11-23387457 ( Library ) Fax: +91-11-23381779 E-Mail: <?= mailto('gm@csoi.org.in');?>, <?= mailto('accounts@csoi.org.in');?>,<?= mailto('jayant@csoi.org.in');?></div></div></li>
+    	<li><div class="row"><div class="six columns"><?= anchor('http://www.ndmc.gov.in/psoi/', 'PSOI', array('target' => '_blank')); ?></div><div class="six columns">Vinay Marg, Chanakya Puri, New Delhi - 110021 (INDIA) Telefax: +91-11-26111440  E-mail: <?= mailto('psoidelhi@yahoo.co.in');?></div></div></li>
+    	<li><div class="row"><div class="six columns"><?= anchor('http://dda.org.in/sports/sirifort_Sports_complex.htm', 'Siri Fort Sports Complex', array('target' => '_blank')); ?> </div><div class="six columns"> </div></div></li>
     	<li><div class="row"><div class="six columns"><?= anchor('http://www.indiahabitat.org/', 'India Habitat Centre', array('target' => '_blank')); ?> Sector-38, Rajiv Chowk, Gurgaon, Haryana  122001</div><div class="six columns"> Hotline: +91 124 4141414</div></div></li>
-    	<li><div class="row"><div class="six columns"><?= anchor('http://www.iiccentre.org/', 'India Islamic Cultural Centre', array('target' => '_blank')); ?> 87-88, Lodhi Road, Lodhi Estate, New Delhi, Delhi 110003</div><div class="six columns"> Contact:  011 4353 5353</div></div></li>
-    	<li><div class="row"><div class="six columns"><?= anchor('http://www.medanta.org/', 'Medanta', array('target' => '_blank')); ?></div><div class="six columns"> Hotline: +91 124 4141414</div></div></li>
-    	<li><div class="row"><div class="six columns"><?= anchor('http://www.medanta.org/', 'Medanta', array('target' => '_blank')); ?></div><div class="six columns"> Hotline: +91 124 4141414</div></div></li>
     </ul>
     <a class="close-reveal-modal">×</a>
   </div>
@@ -611,6 +628,28 @@
   		<li><?= anchor('http://www.lbsnaa.gov.in/courses/listing/4', 'Workshops and Seminars', array('target' => '_blank')); ?></li>
   		<li><?= anchor('http://www.lbsnaa.gov.in/courses/upcomingcourse', 'Upcomming Courses', array('target' => '_blank')); ?></li>
   		<li><?= anchor('http://www.lbsnaa.gov.in/courses/listing/3', 'In-service Courses', array('target' => '_blank')); ?></li>
+  	</ul>
+  	<a class="close-reveal-modal">×</a>
+  </div>
+  
+  <div id="finance" class="reveal-modal">
+  	<ul><h3>Financial Management</h3>
+  		<li><?= anchor('http://www.economywatch.com/', 'Economy Watch', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://finance.indiamart.com/', 'Finance IndiaMart', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://www.banknetindia.com/', 'Bank Net India', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://www.indiastat.com/', 'India Stat', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://www.moneymantrastock.com/', 'Money Matra Stock', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://www.google.com/finance', 'Google Finance', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://in.finance.yahoo.com/', 'Yahoo! Finance', array('target' => '_blank')); ?></li>
+  	</ul>
+  	<a class="close-reveal-modal">×</a>
+  </div>
+  
+  <div id="personnel" class="reveal-modal">
+  	<ul><h3>Personnel Sites</h3>
+  		<li><?= anchor('http://www.persmin.nic.in/', 'Personnel Ministry', array('target' => '_blank')); ?></li>
+  		<li><?= anchor('http://niyuktionline.up.nic.in/', 'Niyukti Online', array('target' => '_blank')); ?></li>
+
   	</ul>
   	<a class="close-reveal-modal">×</a>
   </div>
