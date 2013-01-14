@@ -49,10 +49,10 @@
           <section>
             <ul class="left">
               <li id="dashboard"><?= anchor('dashboard', 'Dashboard'); ?></li>
-              <li id="blog"><?= anchor('blog', 'Blog');?></li>
+              <li id="blog"><?= anchor('blog', 'Blog'); ?></li>
               <li id="forum"><?= anchor('dashboard', 'Forum'); ?></li>
               <li class="has-dropdown">
-              	<?= anchor('chatroom', 'Chat Room', array('id'=> 'chatroom')); ?>
+              	<?= anchor('chatroom', 'Chat Room', array('id' => 'chatroom')); ?>
               	<ul class="dropdown">
               		<?php
 					foreach ($chatter as $row) {
@@ -71,11 +71,11 @@
   	<ul id="find" class="dropdown right"></ul>
   </li>
               <li id="settings" class="has-dropdown">
-                <a href="#"><?= $username ?></a>
+                <a href="#"><?= $username; ?></a>
 
                 <ul class="dropdown">
-                  <li><?= anchor('settings', 'Account Settings', array('style'=>'padding-left:15px;'));?></li>
-                  <li><?= anchor('dashboard/logout', 'Logout', array('style'=>'padding-left:15px;'));?></li>
+                  <li><?= anchor('settings', 'Account Settings', array('style' => 'padding-left:15px;')); ?></li>
+                  <li><?= anchor('dashboard/logout', 'Logout', array('style' => 'padding-left:15px;')); ?></li>
                 </ul>
                 </li>
             </ul>
@@ -97,32 +97,45 @@
 
           <div class="hide-for-small panel">
             <h3><?= $fname . ' ' . $lname; ?></h3>
+            <h6>Birthday: </h6><?= $bday; ?>
             <div class="row">
             	<div class="six columns"><h6>Spouse: </h6><p><?= $spouse; ?></p></div>
 				<div class="six columns">
             <h6>Children: </h6><p>
-            	<?php foreach ($children as $row) {
-					echo $row['child'] . '<br />';
+            	<?php
+				if (isset($children[0]['child'])) {
+					foreach ($children as $row) {
+						echo $row['child'] . '<br />';
+					}
 				}
             	?></p>
             	</div>
             </div>
             <div class="row">
             	<div class="six columns"><h6>Mobile:</h6><p>
-            	<?php foreach ($mobile as $row) {
-					echo $row['number'] . '<br />';
-				}
+            	<?php
+					if (isset($mobile[0]['number'])) {
+						foreach ($mobile as $row) {
+							echo $row['number'] . "(".$row['type'].")" .'<br />';
+						}
+					}
             	?>
             </p></div>
             <div class="six columns"><h6>Landline:</h6><p>
-            	<?php foreach ($landline as $row) {
-					echo $row['std'] . ' - ' . $row['number'] . '<br />';
+            	<?php
+				if (isset($landline[0]['std'])) {
+					foreach ($landline as $row) {
+						echo $row['std'] . '-' . $row['number'] . "(".$row['type'].")" .'<br />';
+					}
 				}
             	?></p>
             </div>
             </div>
-            <h6>Emails:</h6><p><?php foreach ($emails as $row) {
-					echo mailto($row['email']) . '<br />';
+            <h6>Emails:</h6><p><?php
+				if (isset($emails[0]['email'])) {
+					foreach ($emails as $row) {
+						echo mailto($row['email']) . '<br />';
+					}
 				}
             	?></p>
             <h6>Address:</h6><p><?= $street; ?><br />
@@ -572,8 +585,8 @@
   
   <div id="clubs" class="reveal-modal">
     <ul><h3>Clubs</h3>
-    	<li><div class="row"><div class="six columns"><?= anchor('http://www.csoi.org.in/', 'CSOI', array('target' => '_blank')); ?></div><div class="six columns">F-116, Multi Storey Apartments, Kasturba Gandhi Marg,New Delhi-110 001. Contact No.: + 91-11-23070292 (General Manager) + 91-11-23388107 ( Manager) (Reception)  + 91-11-23383438/23383572/32034885 + 91-11-23073138 (Accounts) +91-11-23387457 ( Library ) Fax: +91-11-23381779 E-Mail: <?= mailto('gm@csoi.org.in');?>, <?= mailto('accounts@csoi.org.in');?>,<?= mailto('jayant@csoi.org.in');?></div></div></li>
-    	<li><div class="row"><div class="six columns"><?= anchor('http://www.ndmc.gov.in/psoi/', 'PSOI', array('target' => '_blank')); ?></div><div class="six columns">Vinay Marg, Chanakya Puri, New Delhi - 110021 (INDIA) Telefax: +91-11-26111440  E-mail: <?= mailto('psoidelhi@yahoo.co.in');?></div></div></li>
+    	<li><div class="row"><div class="six columns"><?= anchor('http://www.csoi.org.in/', 'CSOI', array('target' => '_blank')); ?></div><div class="six columns">F-116, Multi Storey Apartments, Kasturba Gandhi Marg,New Delhi-110 001. Contact No.: + 91-11-23070292 (General Manager) + 91-11-23388107 ( Manager) (Reception)  + 91-11-23383438/23383572/32034885 + 91-11-23073138 (Accounts) +91-11-23387457 ( Library ) Fax: +91-11-23381779 E-Mail: <?= mailto('gm@csoi.org.in'); ?>, <?= mailto('accounts@csoi.org.in'); ?>,<?= mailto('jayant@csoi.org.in'); ?></div></div></li>
+    	<li><div class="row"><div class="six columns"><?= anchor('http://www.ndmc.gov.in/psoi/', 'PSOI', array('target' => '_blank')); ?></div><div class="six columns">Vinay Marg, Chanakya Puri, New Delhi - 110021 (INDIA) Telefax: +91-11-26111440  E-mail: <?= mailto('psoidelhi@yahoo.co.in'); ?></div></div></li>
     	<li><div class="row"><div class="six columns"><?= anchor('http://dda.org.in/sports/sirifort_Sports_complex.htm', 'Siri Fort Sports Complex', array('target' => '_blank')); ?> </div><div class="six columns"> </div></div></li>
     	<li><div class="row"><div class="six columns"><?= anchor('http://www.indiahabitat.org/', 'India Habitat Centre', array('target' => '_blank')); ?> Sector-38, Rajiv Chowk, Gurgaon, Haryana  122001</div><div class="six columns"> Hotline: +91 124 4141414</div></div></li>
     </ul>
@@ -785,9 +798,9 @@
   <!-- Initialize JS Plugins -->
   <script src="<?= base_url(); ?>javascripts/app.js"></script>
   <script type="text/javascript" src="<?= base_url(); ?>javascripts/chat.js"></script>
-  <script type="text/javascript">var base_url = '<?= base_url(); ?>';</script>
+  <script type="text/javascript">var base_url =  '<?= base_url(); ?>';</script>
   <script type="text/javascript">
-  	$(document).ready(function () {
+  		$(document).ready(function () {
   		$('input').keypress(function (e) {
   			console.log(e);
   			$.ajax({
@@ -801,28 +814,28 @@
   					console.log(data);
   					var mark = "";
   					for (x in data) {
-  						mark += "<li><a href='<?=base_url();?>dashboard/profile/"+data[x]["username"]+"'>"+data[x]["fname"]+" "+data[x]["lname"]+"</a></li>";
-  					}
-  					$('#find').html(mark);
-  				}
-  			});
-  		});
-  	});
+  						mark += "<li><a href='<?=base_url(); ?>dashboard/profile/"+data[x]["username"]+"'>"+data[x]["fname"]+" "+data[x]["lname"]+"</a></li>";
+					}
+					$('#find').html(mark);
+				}
+			});
+		});
+	});
   </script>
   
 <script>
-  $(window).load(function() {
-    $("#joyride").joyride({
-      /* Options will go here */
-     scrollSpeed: 300,
-     timer: 5000,
-     startTimerOnClick: true,
-     //tipAnimation: pop,
-     cookieMonster: true,
-     cookieName: 'dashboardjoy',
-     cookieDomain: false
-    });
-  });
+	$(window).load(function() {
+		$("#joyride").joyride({
+			/* Options will go here */
+			scrollSpeed : 300,
+			timer : 5000,
+			startTimerOnClick : true,
+			//tipAnimation: pop,
+			cookieMonster : true,
+			cookieName : 'dashboardjoy',
+			cookieDomain : false
+		});
+	}); 
 </script>
 </body>
 </html>

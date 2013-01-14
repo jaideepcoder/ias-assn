@@ -69,7 +69,7 @@ class Dashboard extends CI_Controller {
 			}
 		}
 		$data['emails'] = $newres;
-		
+		$data['username'] = $session_data['username'];
 		$this -> load -> view('foundation/dashboard', $data);
 	}
 
