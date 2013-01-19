@@ -33,7 +33,7 @@
 	<!--[if lte IE 7]>
 	<link type="text/css" rel="stylesheet" media="all" href="<?= base_url(); ?>stylesheets/screen_ie.css" />
 	<![endif]-->
-    <div class="twelve columns">
+    <div class="twelve columns"></div>
 
     <!-- Navigation -->
 
@@ -66,7 +66,7 @@
 			
             <ul class="right">
             	<li class="has-dropdown">
-  	<a><input type="search" placeholder="Search..."/></a>
+  	<a><input type="search" placeholder="Search..." x-webkit-speech/></a>
   	
   	<ul id="find" class="dropdown right"></ul>
   </li>

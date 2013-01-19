@@ -105,7 +105,7 @@
     <div class="nine columns" role="content">
 		<?php
 		foreach($posts as $post) {
-			echo "<article><h3 class=\"bloghead\">" . anchor('blog/post/'.$post['id'], $post['title']) . "	</h3>" . $post['taggit'] . "<h6>Written by " . anchor('blog/blogger/'.$post['username'], $post['fname'] . ' ' . $post['lname'], array('class'=>'blogauth')) . " on ". anchor('blog/at/'.$post['date'],$post['date'], array('class'=>'blogat')). ".</h6><div class=\"row\"><div class=\"six columns\"><p>" . nl2br(substr($post['post'],0,240)) ."</p></div><div class=\"six columns\"><img src=\"".$post['image'].".jpg\" width=\"400\" height=\"240\" /></div><p>".nl2br(substr($post['post'],240))."</p></article><hr />";
+			echo "<article><h3 class=\"bloghead\">" . anchor('blog/post/'.$post['id'], $post['title']) . "	</h3>" . $post['taggit'] . "<h6>Written by " . anchor('blog/blogger/'.$post['username'], $post['fname'] . ' ' . $post['lname'], array('class'=>'blogauth')) . " on ". anchor('blog/at/'.$post['date'],$post['date'], array('class'=>'blogat')). ".</h6><div class=\"row\"><div class=\"six columns\"><p>" . nl2br($post['post']) ."</p></div><div class=\"six columns\"><img src=\"".$post['image'].".jpg\" width=\"400\" height=\"240\" /></div></article><hr />";
 		}
 		
 		?>      
@@ -165,6 +165,8 @@
       </div>
   </div>
   </footer>
+  <!-- End Footer -->
+
 <!-- Each tip is set within this <ol>. -->
 <!-- This creates the order the tips are displayed -->
 <ol id="joyride1" hidden>
@@ -188,7 +190,6 @@
   <!--<li data-id="joy1">Take a guided Tour?</li>
   <!--This tip will be display as a modal -->
 </ol>
-  <!-- End Footer -->
 
   <!-- Included JS Files (Uncompressed) -->
   <!--

@@ -29,9 +29,10 @@ class Blog extends CI_Controller {
 			$newres[$i] = get_object_vars($result[$i]);
 		}
 		for ($i = 0; $i < count($newres); $i++) {
-			$newres[$i]['taggit'] = "<span class='label'>" . str_replace(', ', "</span>&nbsp;<span class='label'>", $newres[$i]['taggit']) . "</span>";
+			$newres[$i]['taggit'] = str_replace(' ', '', $newres[$i]['taggit']);
+			$newres[$i]['taggit'] = "<span class='label'>" . str_replace(',', "</span>&nbsp;<span class='label'>", $newres[$i]['taggit']) . "</span>";
 			$newres[$i]['image'] = $newres[$i]['image'] == NULL ? 'http://placehold.it/400x240&text=[img]' : base_url() . 'uploads/' . $newres[$i]['image'];
-			$newres[$i]['post'] = '<p>' . substr($newres[$i]['post'], 0, 240) . '...' . '</p>';
+			$newres[$i]['post'] = '<p>' . substr($newres[$i]['post'], 0, 240) . '... ' .anchor('blog/post/'.$newres[$i]['id'], '<i>Read Full Post.</i>'). '</p>';
 		}
 		$data['posts'] = $newres;
 		$data['username'] = $session_data['username'];
@@ -47,8 +48,7 @@ class Blog extends CI_Controller {
 		$this -> load -> library('upload', $config);
 		if (!$this -> upload -> do_upload()) {
 			$this -> session -> set_flashdata('flashblog', $this -> upload -> display_errors());
-			//var_dump($this -> upload -> display_errors());die;
-			//redirect('blog', 'refresh');
+
 		} else {
 			$image = $this -> upload -> data();
 			$data['image'] = $image['raw_name'];
@@ -81,9 +81,10 @@ class Blog extends CI_Controller {
 			$newres[$i] = get_object_vars($result[$i]);
 		}
 		for ($i = 0; $i < count($newres); $i++) {
-			$newres[$i]['taggit'] = "<span class='label'>" . str_replace(', ', "</span>&nbsp;<span class='label'>", $newres[$i]['taggit']) . "</span>";
+			$newres[$i]['taggit'] = str_replace(' ', '', $newres[$i]['taggit']);
+			$newres[$i]['taggit'] = "<span class='label'>" . str_replace(',', "</span>&nbsp;<span class='label'>", $newres[$i]['taggit']) . "</span>";
 			$newres[$i]['image'] = $newres[$i]['image'] == NULL ? 'http://placehold.it/400x240&text=[img]' : base_url() . 'uploads/' . $newres[$i]['image'];
-			$newres[$i]['post'] = '<p>' . substr($newres[$i]['post'], 0, 240) . '...' . '</p>';
+			$newres[$i]['post'] = '<p>' . substr($newres[$i]['post'], 0, 240) . '... ' .anchor('blog/post/'.$newres[$i]['id'], '<i>Read Full Post.</i>'). '</p>';
 		}
 		$data['posts'] = $newres;
 
@@ -107,9 +108,11 @@ class Blog extends CI_Controller {
 			$newres[$i] = get_object_vars($result[$i]);
 		}
 		for ($i = 0; $i < count($newres); $i++) {
-			$newres[$i]['taggit'] = "<span class='label'>" . str_replace(', ', "</span>&nbsp;<span class='label'>", $newres[$i]['taggit']) . "</span>";
+			$newres[$i]['taggit'] = str_replace(' ', '', $newres[$i]['taggit']);
+			$newres[$i]['taggit'] = "<span class='label'>" . str_replace(',', "</span>&nbsp;<span class='label'>", $newres[$i]['taggit']) . "</span>";
+			
 			$newres[$i]['image'] = $newres[$i]['image'] == NULL ? 'http://placehold.it/400x240&text=[img]' : base_url() . 'uploads/' . $newres[$i]['image'];
-			$newres[$i]['post'] = '<p>' . substr($newres[$i]['post'], 0, 240) . '...' . '</p>';
+			$newres[$i]['post'] = '<p>' . substr($newres[$i]['post'], 0, 240) . '... ' .anchor('blog/post/'.$newres[$i]['id'], '<i>Read Full Post.</i>'). '</p>';
 		}
 		$data['posts'] = $newres;
 
@@ -133,7 +136,9 @@ class Blog extends CI_Controller {
 			$newres[$i] = get_object_vars($result[$i]);
 		}
 		for ($i = 0; $i < count($newres); $i++) {
-			$newres[$i]['taggit'] = "<span class='label'>" . str_replace(', ', "</span>&nbsp;<span class='label'>", $newres[$i]['taggit']) . "</span>";
+			$newres[$i]['taggit'] = str_replace(' ', '', $newres[$i]['taggit']);
+			$newres[$i]['taggit'] = "<span class='label'>" . str_replace(',', "</span>&nbsp;<span class='label'>", $newres[$i]['taggit']) . "</span>";
+			
 			$newres[$i]['image'] = $newres[$i]['image'] == NULL ? 'http://placehold.it/400x240&text=[img]' : base_url() . 'uploads/' . $newres[$i]['image'];
 		}
 		$data['posts'] = $newres;
@@ -158,9 +163,11 @@ class Blog extends CI_Controller {
 			$newres[$i] = get_object_vars($result[$i]);
 		}
 		for ($i = 0; $i < count($newres); $i++) {
-			$newres[$i]['taggit'] = "<span class='label'>" . str_replace(', ', "</span>&nbsp;<span class='label'>", $newres[$i]['taggit']) . "</span>";
+			$newres[$i]['taggit'] = str_replace(' ', '', $newres[$i]['taggit']);
+			$newres[$i]['taggit'] = "<span class='label'>" . str_replace(',', "</span>&nbsp;<span class='label'>", $newres[$i]['taggit']) . "</span>";
+			
 			$newres[$i]['image'] = $newres[$i]['image'] == NULL ? 'http://placehold.it/400x240&text=[img]' : base_url() . 'uploads/' . $newres[$i]['image'];
-			$newres[$i]['post'] = '<p>' . substr($newres[$i]['post'], 0, 240) . '...' . '</p>';
+			$newres[$i]['post'] = '<p>' . substr($newres[$i]['post'], 0, 240) . '... ' .anchor('blog/post/'.$newres[$i]['id'], '<i>Read Full Post.</i>'). '</p>';
 		}
 		$data['posts'] = $newres;
 
