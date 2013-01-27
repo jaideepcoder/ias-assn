@@ -120,11 +120,11 @@ function child($username) {
 	}
 	
 	function getchatter($username) {
-		$this -> db -> select('*');
-		$this -> db -> from('users');
-		$this -> db -> join('online', 'users.username = online.username');
-		$this -> db -> where("users.username <> '$username'");
-		$this -> db -> where("online.username", 1);
+		$this -> db -> select('online.username, users.fname, users.lname');
+		$this -> db -> from('online');
+		$this -> db -> join('users', 'users.username = online.username');
+		$this -> db -> where('users.username <> ', $username);
+		$this -> db -> where("online", '1');
 		$this -> db -> limit(25);
 		$query = $this -> db -> get();
 		return $query -> result();
@@ -173,6 +173,20 @@ function child($username) {
 	
 	function makeoffline($username) {
 		$this->db->delete('online', array('username'=>$username));
+	}
+	
+	function ip_stat() {
+		$this->db->select('count(ip)');
+		$this->db->from('stat');
+		$query = $this->db->get();
+		$r = $query->result();
+		$r1 = get_object_vars($r[0]);
+		return($r1['count(ip)']);
+	}
+	
+	function addip($ip) {
+		$sql = "INSERT IGNORE INTO `stat` (`ip`) VALUES (?);";
+		$this->db->query($sql, $ip);
 	}
 
 }

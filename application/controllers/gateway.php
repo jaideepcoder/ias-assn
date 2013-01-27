@@ -6,6 +6,7 @@ class Gateway extends CI_Controller {
 	function Gateway() {
 		parent::__construct();
 		$this -> load -> model('app_model');
+		$this->app_model->addip($this->input->ip_address());
 	}
 
 	function index() {
@@ -16,13 +17,8 @@ class Gateway extends CI_Controller {
 		$data['flashlog'] = $this->session->flashdata('errorlog');
 		$data['flasherrorreg'] = $this->session->flashdata('errorreg');
 		$data['flashsuccessreg'] = $this->session->flashdata('successreg');
-		if($this->session->userdata('site_count')) {
-			$this->session->set_userdata(array('site_count' => $this->session->userdata('site_count')+1));
-		}
-		else {
-			$this->session->set_userdata(array('site_count' => 1));
-		}
-		$data['site_count'] = $this->session->userdata('site_count');
+		$result = $this->app_model->ip_stat();
+		$data['site_count'] = $result;
 		$this -> load -> view('foundation/index', $data);
 	}
 

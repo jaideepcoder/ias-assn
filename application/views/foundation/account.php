@@ -64,7 +64,7 @@
 			
             <ul class="right">
             	<li class="has-dropdown">
-  	<a><input type="search" placeholder="Search..." x-webkit-speech/></a>
+  	<a><input type="search" id="finder" placeholder="Search..." x-webkit-speech/></a>
   	
   	<ul id="find" class="dropdown right"></ul>
   </li>
@@ -112,10 +112,10 @@
     	<div hidden></div>
     	<h6>Name:</h6>
     	<div class="six columns">
-    		<input type="text" maxlength="50" name="fname" placeholder="First Name" value="<?= $fname; ?>"/>
+    		<input type="text" maxlength="50" name="fname" class="info" placeholder="First Name" value="<?= $fname; ?>"/>
     	</div>
     	<div class="six columns">
-    		<input type="text" maxlength="50" name="lname" placeholder="Last Name" value="<?= $lname; ?>"/>
+    		<input type="text" maxlength="50" name="lname" class="info" placeholder="Last Name" value="<?= $lname; ?>"/>
     	</div>
     </div>
 
@@ -125,10 +125,10 @@
   <h6>Password:</h6>
   <input type="password" maxlength="50" name="prevpass" placeholder="Previous Password" />
     	<div class="six columns">
-    		<input type="password" maxlength="50" name="password" placeholder="New Password" />
+    		<input type="password" maxlength="50" name="password" class="info" placeholder="New Password" />
     	</div>
     	<div class="six columns">
-    		<input type="password" maxlength="50" name="checkpassword" placeholder="Re-enter Password" />
+    		<input type="password" maxlength="50" name="checkpassword" class="info" placeholder="Re-enter Password" />
     	</div>
     </div>
 
@@ -138,25 +138,25 @@
   <h6>Details:</h6>
   <input type="date" name="bday" />
     	<div class="six columns">
-    		<input type="text" maxlength="4" name="batch" placeholder="Batch" value="<?= $batch; ?>" />
+    		<input type="text" maxlength="4" name="batch" placeholder="Batch" class="info" value="<?= $batch; ?>" />
     	</div>
     	<div class="six columns">
-    		<input type="text" maxlength="2" name="cadre" placeholder="Cadre" value="<?= $cadre; ?>" />
+    		<input type="text" maxlength="2" name="cadre" placeholder="Cadre" class="info" value="<?= $cadre; ?>" />
     	</div>
     </div>
 
 <a name="address" data-magellan-destination='address'></a>
 <div class="row">
   <h6>Address:</h6>
-  <input type="text" name="street" placeholder="Street" value="<?= $street; ?>"/>
+  <input type="text" name="street" placeholder="Street" class="info" value="<?= $street; ?>"/>
     	<div class="four columns">
-    		<input type="text" name="city" placeholder="City" value="<?= $city; ?>" />
+    		<input type="text" name="city" placeholder="City" class="info" value="<?= $city; ?>" />
     	</div>
     	<div class="four columns">
-    		<input type="text" name="state" placeholder="State" value="<?= $state; ?>" />
+    		<input type="text" name="state" placeholder="State" class="info" value="<?= $state; ?>" />
     	</div>
     	<div class="four columns">
-    		<input type="text" name="zip" placeholder="Zip" value="<?= $zip; ?>" />
+    		<input type="text" name="zip" placeholder="Zip" class="info" value="<?= $zip; ?>" />
     	</div>
     </div>
     
@@ -167,44 +167,44 @@
     		<?php
 			if (isset($mobile[0]['number'])) {
 				foreach ($mobile as $row) {
-					echo "<div class=\"row\"><div class=\"eight columns\"><input type=\"tel\" maxlength=\"10\" placeholder=\"Number\" value=\"" . $row['number'] . "\"></div><div class=\"four columns\"><input type=\"text\" maxlength=\"1\" placeholder=\"type\" value=\"" . $row['type'] . "\"></div></div>";
+					echo "<div class=\"row\"><div class=\"eight columns\"><input type=\"tel\" maxlength=\"10\" class=\"info\" placeholder=\"Number\" value=\"" . $row['number'] . "\"></div><div class=\"four columns\"><input type=\"text\" maxlength=\"1\" class=\"info\" placeholder=\"type\" value=\"" . $row['type'] . "\"></div></div>";
 				}
 			}
             ?>
-			<div class="row"><div class="eight columns"><input type="tel" maxlength="10" placeholder="Number" /></div><div class="four columns"><input type="text" placeholder="-" maxlength="1"/></div></div>
+			<div class="row"><div class="eight columns"><input type="tel" maxlength="10" class="info" placeholder="Number" /></div><div class="four columns"><input type="text" placeholder="-" class="info" maxlength="1"/></div></div>
     </div>
     <div class="six columns">
     	<?php
 		if (isset($landline[0]['std'])) {
 			foreach ($landline as $row) {
-				echo "<div class=\"three columns\"><input type=\"text\" maxlength=\"4\" placeholder=\"Std\" value=\"" . $row['std'] . "\"></div><div class=\"six columns\"><input type=\"tel\" maxlength=\"10\" placeholder=\"Number\" value=\"" . $row['number'] . "\"></div><div class=\"three columns\"><input type=\"text\" maxlength=\"1\" placeholder=\"type\" value=\"" . $row['type'] . "\"></div>";
+				echo "<div class=\"three columns\"><input type=\"text\" maxlength=\"4\" class=\"info\" placeholder=\"Std\" value=\"" . $row['std'] . "\"></div><div class=\"six columns\"><input type=\"tel\" maxlength=\"10\" class=\"info\" placeholder=\"Number\" value=\"" . $row['number'] . "\"></div><div class=\"three columns\"><input type=\"text\" maxlength=\"1\" class=\"info\" placeholder=\"type\" value=\"" . $row['type'] . "\"></div>";
 			}
 		}
             ?>
-			<div class="three columns"><input type="text" maxlength="4" placeholder="Std" ></div><div class="six columns"><input type="tel" maxlength="10" placeholder="Number" /></div><div class="three columns"><input type="text" maxlength="1" placeholder="-" /></div>
+			<div class="three columns"><input type="text" maxlength="4" class="info" placeholder="Std" ></div><div class="six columns"><input type="tel" class="info" maxlength="10" placeholder="Number" /></div><div class="three columns"><input type="text" maxlength="1" class="info" placeholder="-" /></div>
     </div>
     </div>
     
 <a name="about" data-magellan-destination='about'></a>
 <div class="row">
 	<h6>About Me:</h6>
-	<textarea name="aboutme" rows="5" placeholder="Tell us about yourself..."><?= $aboutme; ?></textarea>
+	<textarea name="aboutme" rows="5" class="info" placeholder="Tell us about yourself..."><?= $aboutme; ?></textarea>
 </div>
 <a name="family" data-magellan-destination='family'></a>
 <div class="row">
   <h6>Family:</h6>
     <div class="six columns">
-   		<input type="text" maxlength="50" placeholder="Spouse" value="<?= $spouse; ?>">
+   		<input type="text" maxlength="50" class="info" placeholder="Spouse" value="<?= $spouse; ?>">
     </div>
     <div class="six columns">
 		<?php
 		if (isset($children[0]['child'])) {
 			foreach ($children as $row) {
-				echo "<div class=\"row\"><input type=\"text\" placeholder=\"Child\" value=\"" . $row['child'] . "\"></div>";
+				echo "<div class=\"row\"><input type=\"text\" class=\"info\" placeholder=\"Child\" value=\"" . $row['child'] . "\"></div>";
 			}
 		}
        	?>
-		<div class="row"><input type="text" maxlength="50" placeholder="Child"></div>
+		<div class="row"><input type="text" maxlength="50" class="info" placeholder="Child"></div>
     </div>
     </div>
 
@@ -214,18 +214,18 @@
 <?php
 if (isset($emails[0]['email'])) {
 	foreach ($emails as $row) {
-		echo "<div class=\"row\"><input type=\"email\" placeholder=\"Email\" value=\"".$row['email']."\"></div>";
+		echo "<div class=\"row\"><input type=\"email\" class=\"info\" placeholder=\"Email\" value=\"" . $row['email'] . "\"></div>";
 	}
 }
 ?>
-<div class="row"><input type="email" placeholder="Email"></div>
+<div class="row"><input type="email" class="info" placeholder="Email"></div>
 </div>
 
 <a name="social" data-magellan-destination='social'></a>
 <div class="row">
 	<h6>Social: </h6>
-	<div class="six columns"><input type="text" placeholder="facebook" value="<?= $facebook; ?>"/></div>
-	<div class="six columns"><input type="text" placeholder="twitter" value="<?= $twitter; ?>"/></div>
+	<div class="six columns"><input type="text" class="info" placeholder="facebook" value="<?= $facebook; ?>"/></div>
+	<div class="six columns"><input type="text" class="info" placeholder="twitter" value="<?= $twitter; ?>"/></div>
 </div>
 
 </div>
@@ -300,30 +300,35 @@ if (isset($emails[0]['email'])) {
   <!-- Initialize JS Plugins -->
   <script src="<?= base_url(); ?>javascripts/app.js"></script>
   <script type="text/javascript" src="<?= base_url(); ?>javascripts/chat.js"></script>
-  <script type="text/javascript">var base_url = '<?= base_url(); ?>';</script>
+  <script type="text/javascript">var base_url =  '<?= base_url(); ?>';</script>
   <script type="text/javascript">
-  			$(document).ready(function () {
-  		$('input').keypress(function (e) {
-  			console.log(e);
-  			$.ajax({
-  				type: 'post',
-  				data: {
-  					q: $('input').val()
-  				},
-  				url: base_url+'dashboard/search',
-  				dataType: 'json',
-  				success: function(data) {
-  					console.log(data);
-  					var mark = "";
-  					for (x in data) {
-  						mark += "<li><a href='<?=base_url(); ?>
-						dashboard / profile / "+data[x]["username"]+"'>"+data[x]["fname"]+" "+data[x]["lname"]+"</a></li>";
-						}
-						$('#find').html(mark);
-						}
-						});
-						});
-						});
+  $(document).ready(function () {
+  	$('input#finder').keypress(function (e) {
+  		console.log(e);
+  		$.ajax({
+  			type: 'post',
+  			data: {
+  				q: $('input#finder').val()
+			},
+  			url: base_url+'dashboard/search',
+  			dataType: 'json',
+  			success: function(data) {
+  				console.log(data);
+  				var mark = "";
+  				for (x in data) {
+  					mark += "<li><a href='<?=base_url(); ?>dashboard/profile/"+data[x]["username"]+"'>"+data[x]["fname"]+" "+data[x]["lname"]+"</a></li>";
+				}
+				$('#find').html(mark);
+			}
+		});
+	});
+	
+	$('.info').keypress(function(e) {
+		if(e.which==13) {
+			alert('Yes');
+		}
+	});
+});
   </script>
 </body>
 </html>

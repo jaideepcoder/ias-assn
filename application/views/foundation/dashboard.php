@@ -53,12 +53,7 @@
               <li id="forum"><?= anchor('dashboard', 'Forum'); ?></li>
               <li class="has-dropdown">
               	<?= anchor('chatroom', 'Chat Room', array('id' => 'chatroom')); ?>
-              	<ul class="dropdown">
-              		<?php
-					foreach ($chatter as $row) {
-						echo "<li><a href='javascript:void(0)' onclick=\"javascript:chatWith('" . $row['username'] . "')\">" . $row['fname'] . ' ' . $row['lname'] . "</a></li>";
-					}
-  			?>
+              	<ul id="chatter" class="dropdown">
               	</ul>
               </li>
               <li id="google"><a href="http://www.google.com/search?q=<?=$fname . '+' . $lname; ?>" target="_blank">Google Yourself</a></li>  
@@ -821,6 +816,24 @@
 			});
 		});
 	});
+	setInterval(function() {
+		$.ajax({
+			type: 'post',
+			data: {
+				q: '<?=$username?>'
+			},
+			url: base_url+"dashboard/chat",
+			dataType: 'json',
+			success: function(data) {
+ 				console.log(data);
+  				var mark = "";
+  				for (x in data) {
+  					mark += "<li><a href='javascript:void(0)' onclick=\"javascript:chatWith('" + data[x]['username'] + "')\">" + data[x]['fname'] + ' ' + data[x]['lname'] + "</a></li>";
+				}
+				$('#chatter').html(mark);
+			}
+		});
+	}, 10000);
   </script>
   
 <script>

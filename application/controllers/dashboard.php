@@ -27,13 +27,6 @@ class Dashboard extends CI_Controller {
 		else {
 			$data['image'] = "http://www.gravatar.com/avatar/205e460b479e2e5b48dfhbf710c08d50?s=500";
 		}
-		$result = $this -> app_model -> getchatter($session_data['username']);
-		$newres = array();
-		for ($i = 0; $i < count($result); $i++) {
-			$newres[$i] = get_object_vars($result[$i]);
-		}
-		$data['chatter'] = $newres;
-		
 		$result = $this -> app_model -> mob($session_data['username']);
 		if ($result != null) {
 			$newres = array();
@@ -87,12 +80,6 @@ class Dashboard extends CI_Controller {
 		else {
 			$data['image'] = "http://www.gravatar.com/avatar/205e460b479e2e5b48dfhbf710c08d50?s=500";
 		}
-		$result = $this -> app_model -> getchatter($session_data['username']);
-		$newres = array();
-		for ($i = 0; $i < count($result); $i++) {
-			$newres[$i] = get_object_vars($result[$i]);
-		}
-		$data['chatter'] = $newres;
 		$result = $this -> app_model -> mob($user);
 		if ($result != null) {
 			$newres = array();
@@ -137,6 +124,16 @@ class Dashboard extends CI_Controller {
 	function search() {
 		$name = $this -> input -> post('q');
 		$result = $this -> app_model -> member($name);
+		$newres = array();
+		for ($i = 0; $i < count($result); $i++) {
+			$newres[$i] = get_object_vars($result[$i]);
+		}
+		echo json_encode($newres);
+	}
+	
+	function chat() {
+		$user = $this->input->post('q');
+		$result = $this->app_model->getchatter($user);
 		$newres = array();
 		for ($i = 0; $i < count($result); $i++) {
 			$newres[$i] = get_object_vars($result[$i]);
